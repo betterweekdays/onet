@@ -13,5 +13,8 @@
     "psr-4": {
       "ONET\\": "src/"
     }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "~6.1"
   }
 }
