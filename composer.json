@@ -1,12 +1,17 @@
 {
-  "name": "vendor_name/package_name",
-  "description": "description_text",
-  "minimum-stability": "stable",
-  "license": "proprietary",
+  "name": "betterweekdays/onet_api",
+  "description": "Library to interact with the ONET API: https://services.onetcenter.org/",
+  "minimum-stability": "dev",
+  "license": "GPLv2",
   "authors": [
     {
-      "name": "author's name",
-      "email": "email@example.com"
+      "name": "indytechcook",
+      "email": "neil.hastings@gmail.com"
     }
-  ]
+  ],
+  "autoload": {
+    "psr-4": {
+      "ONET\\": "src/"
+    }
+  }
 }
