@@ -23,6 +23,7 @@ class JobOutlook implements ResourceInterface {
   public function __construct($onet) {
     $this->onet= $onet;
   }
+
   /**
    * The HTTP method to use for the call
    *

@@ -4,7 +4,7 @@ Currently Implemented:
 
 * Detailed Work Activities: https://services.onetcenter.org/reference/online#details_detailed_work_activities
 * Job Outlook: https://services.onetcenter.org/reference/mnm#outlook
-* Education Details: https://services.onetcenter.org/reference/online#details_education
+* Knowledge Details: https://services.onetcenter.org/reference/online#details_knowledge
 
 Each Resource object connects to an endpoint.  The Resource owns the connection to the endpoint knowing about the request and response XML format.
 
@@ -12,7 +12,7 @@ The Config object holds configuration
 
 The Connection object makes the call to the API
 
-The Resource Object will create Enitty objects which are read only value objects.
+The Resource Object will create Entity objects which are read only value objects.
 
 Examples:
 
