@@ -42,7 +42,7 @@ class KnowledgeDetailed implements ResourceInterface {
 
   /**
    * @param \GuzzleHttp\Psr7\Response $response
-   * @return mixed
+   * @return Element[]
    */
   public function map(Response $response) {
     $reader = new Reader();

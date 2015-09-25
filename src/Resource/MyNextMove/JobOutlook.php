@@ -44,7 +44,8 @@ class JobOutlook implements ResourceInterface {
 
   /**
    * @param \GuzzleHttp\Psr7\Response $response
-   * @return mixed
+   * @return JobOutlookEntity
+   *
    */
   public function map(Response $response) {
     $reader = new Reader();
