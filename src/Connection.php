@@ -46,7 +46,8 @@ final class Connection {
     $client_options = [
       'headers' => [
         'Authorization' => 'Basic ' . $this->config->getAuthHash(),
-      ]
+      ],
+      'base_uri' => $this->config->getBaseUrl(),
     ];
 
     // If a handler is set then use that to build the client
