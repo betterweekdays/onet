@@ -4,13 +4,9 @@ namespace ONET\Resource\Online;
 
 
 use GuzzleHttp\Psr7\Response;
-use ONET\Config;
 use ONET\Entity\Activity;
 use ONET\Resource\ResourceInterface;
-use ONET\Response\ResponseInterface;
-use Sabre\Xml\Element\Base;
 use Sabre\Xml\Reader;
-use Sabre\Xml\XmlDeserializable;
 
 class WorkActivityDetailed implements ResourceInterface {
   /**
@@ -41,7 +37,7 @@ class WorkActivityDetailed implements ResourceInterface {
    */
   public function getPath() {
     return 'online/occupations/' .
-      $this->onet . '/details/detailed_work_activities';
+    $this->onet . '/details/detailed_work_activities';
   }
 
   /**
@@ -54,16 +50,14 @@ class WorkActivityDetailed implements ResourceInterface {
     // Pares XML
     $reader = new Reader();
 
-    $reader->elementMap = [
-      '{}activity' => function(Reader $reader) {
-        $parsed = Base::xmlDeserialize($reader);
-        return new Activity($parsed['attributes'], $parsed['value']);
-      },
-    ];
-
     $reader->xml($response->getBody());
     $parse = $reader->parse();
 
-    return $parse['value'];
+    $return = [];
+    foreach($parse['value'] as $value) {
+      $return[] = new Activity($value['attributes'], $value['value']);
+    }
+
+    return $return;
   }
 }

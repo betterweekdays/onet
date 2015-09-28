@@ -54,17 +54,22 @@ class JobOutlook implements ResourceInterface {
       '{}outlook' => function(Reader $reader) {
         $parsed = KeyValue::xmlDeserialize($reader);
 
-        return new Outlook($parsed['category'], $parsed['value']);
+        return new Outlook($parsed['{}category'], $parsed['{}description']);
       },
       '{}bright_outlook' => function(Reader $reader) {
         $parsed = KeyValue::xmlDeserialize($reader);
 
-        return new Outlook($parsed['category'], $parsed['value'], TRUE);
+        return new Outlook($parsed['{}category'], $parsed['{}description'], TRUE);
       },
       '{}green' => function(Reader $reader) {
         $parsed = KeyValue::xmlDeserialize($reader);
 
-        return new Green($parsed['description'], $parsed['category']);
+        return new Green($parsed['{}description'], $parsed['{}category']);
+      },
+      '{}salary' => function(Reader $reader) {
+        $parsed = KeyValue::xmlDeserialize($reader);
+
+        return $parsed['{}annual_median'];
       },
       '{}job_outlook' => function(Reader $reader) {
 
@@ -75,17 +80,17 @@ class JobOutlook implements ResourceInterface {
         foreach ($children as $child) {
           if (isset($child['name'])) {
             switch ($child['name']) {
-              case 'outlook':
-                $outlooks[] = new Outlook($child['category'], $child['description']);
+              case '{}outlook':
+                $outlooks[] = $child['value'];
                 break;
-              case 'bright_outlook':
-                $outlooks[] = new Outlook($child['category'], $child['description'], TRUE);
+              case '{}bright_outlook':
+                $outlooks[] = $child['value'];
                 break;
-              case 'green':
-                $green = new Green($child['category'], $child['description']);
+              case '{}green':
+                $outlooks[] = $child['value'];
                 break;
-              case 'salary':
-                $salary = $child['annual_median'];
+              case '{}salary':
+                $salary = $child['value'];
                 break;
             }
           }

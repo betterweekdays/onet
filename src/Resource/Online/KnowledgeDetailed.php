@@ -37,7 +37,7 @@ class KnowledgeDetailed implements ResourceInterface {
    * @return string
    */
   public function getPath() {
-    return '/online/occupations/' . $this->onet . '/details/knowledge';
+    return 'online/occupations/' . $this->onet . '/details/knowledge';
   }
 
   /**
@@ -54,11 +54,21 @@ class KnowledgeDetailed implements ResourceInterface {
 
         $parsed = KeyValue::xmlDeserialize($reader);
 
-        $name = $parsed['name'];
-        $desc = $parsed['description'];
-        $score = $parsed['score'];
+        $name = $parsed['{}name'];
+        $desc = $parsed['{}description'];
+        $score = $parsed['{}score'];
 
         return new Element($id, $name, $desc, $score, 'knowledge');
+      },
+      '{}knowledge' => function(Reader $reader) {
+        $items = [];
+
+        $children = $reader->parseGetElements();
+        foreach ($children as $child) {
+          $items[] = $child['value'];
+        }
+
+        return $items;
       }
     ];
 
