@@ -34,7 +34,7 @@ final class Config {
     }
 
     $this->auth_hash = $auth_hash;
-    $this->base_url = $auth_hash;
+    $this->base_url = $base_url;
   }
 
   /**
