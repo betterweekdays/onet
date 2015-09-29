@@ -24,9 +24,9 @@ class JobOutlook {
   /**
    * @param Outlook[] $outlooks
    * @param \ONET\Entity\Job\Green $green
-   * @param \ONET\Entity\int $salary
+   * @param int $salary
    */
-  public function __construct(array $outlooks, int $salary = NULL, Green $green = NULL) {
+  public function __construct(array $outlooks, $salary = NULL, Green $green = NULL) {
 
     $this->outlooks = $outlooks;
     $this->green = $green;
